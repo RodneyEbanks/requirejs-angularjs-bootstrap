@@ -1,0 +1,30 @@
+{
+    "name": "requirejs-angularjs-bootstrap",
+    "version": "0.0.1",
+    "description": "AMD module providing AngularJS bootstrap with RequireJS support.",
+    "main": "dist/bootstrap",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/RodneyEbanks/requirejs-angularjs-bootstrap"
+    },
+    "keywords": [
+        "requirejs",
+        "angularjs",
+        "bootstrap"
+    ],
+    "author": "Rodney Robert Ebanks <foss@rodneyebanks.com>",
+    "license": ["New BSD", "MIT"],
+    "bugs": {
+        "url": "https://github.com/RodneyEbanks/requirejs-angularjs-bootstrap/issues"
+    },
+    "homepage": "https://github.com/RodneyEbanks/requirejs-angularjs-bootstrap",
+    "dependencies": {
+        "requirejs": ">2.0.0"
+    },
+    "devDependencies": {
+        "requirejs": ">2.0.0"
+    }
+}
