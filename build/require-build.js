@@ -9,6 +9,7 @@
     removeCombined: true,
     optimize: 'uglify',
     uglify: {
+        quote_style: 2,
         toplevel: true,
         ascii_only: true,
         beautify: false,
