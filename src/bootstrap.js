@@ -16,30 +16,33 @@ define(['config!paths', 'angular'], function($config) {
         var $module = window.angular.module,
             modules = config || $config || {},
             requireModules = ['domReady'],
-            angularModules = [];
+            angularModules = {};
 
         filter = new RegExp(filter || '.*');
 
         // Replacement angular.module to harvest angular.module.name(s)
         window.angular.module = function(name, requires, configFn) {
-            angularModules.push(name);
+            angularModules[name] = name;
+
             return $module(name, requires, configFn);
         };
 
         // List of AMD Requires build from filtered config (passed/requirejs.config)
-        requireModules = [].concat(requireModules, Object.keys(modules).filter(function(element) {
+        requireModules = requireModules.concat(Object.keys(modules).filter(function(element) {
             return filter.test(element);
         }));
 
         // Starting bootstrap by loading all required AMD/Shimmed scripts which should load Angular modules
         requirejs(requireModules, function(domReady) {
+            angularModules = Object.keys(angularModules);
+
             // RequireJS domReady function this function is called once the DOM is ready.
             //It will be safe to query the DOM and manipulate DOM nodes in this function.
             domReady(function() {
 
                 // Starting Angular bootstrap if ng-app directive not in html page;
-                if(!window.angular.resumeBootstrap) {
-                   window.angular.bootstrap(document, []);
+                if (!window.angular.resumeBootstrap) {
+                    window.angular.bootstrap(document.activeElement, []);
                 }
 
                 // Loader to resume Angular Bootstrap when we are ready
